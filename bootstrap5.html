@@ -1,0 +1,1193 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <!--
+        Viewport wajib untuk Bootstrap 5.
+        Tanpa ini, grid & utilities responsive tidak bekerja benar.
+    -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Bootstrap 5 Complete Practice</title>
+  <link rel="icon" href="assets/img/logo.png" type="image/png" />
+
+  <!--
+        =====================================================
+        BOOTSTRAP 5.3 (terbaru di jalur 5.x) — CDN jsDelivr
+        =====================================================
+        CSS: class utility & komponen siap pakai
+        JS bundle: termasuk Popper (dropdown, tooltip, popover, modal)
+    -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+
+  <!--
+        =====================================================
+        BOOTSTRAP ICONS
+        =====================================================
+        Pakai class: bi bi-nama-ikon
+        Contoh: <i class="bi bi-house"></i>
+        Dokumentasi: https://icons.getbootstrap.com/
+    -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+
+  <!--
+        Sedikit CSS lokal HANYA untuk latihan (bukan mengganti Bootstrap).
+        Fokus utama tetap class Bootstrap.
+    -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Hero gradient sederhana — boleh diubah saat latihan */
+    .practice-hero {
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 55%, #f0f9ff 100%);
+    }
+
+    /* Area demo diberi border tipis agar mudah dikenali */
+    .demo-box {
+      border: 1px dashed #cbd5e1;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      background: #f8fafc;
+    }
+
+    .icon-tile {
+      width: 3rem;
+      height: 3rem;
+      display: grid;
+      place-items: center;
+      border-radius: 0.75rem;
+      background: #eff6ff;
+      color: #0d6efd;
+      font-size: 1.35rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =====================================================
+         NAVBAR
+         Latihan:
+         - navbar, navbar-expand-lg
+         - container
+         - navbar-brand, nav-link
+         - navbar-toggler + collapse (JS Bootstrap)
+         - Bootstrap Icons di brand & link
+    ====================================================== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#home">
+        <i class="bi bi-bootstrap-fill me-1"></i>
+        BS<span class="fw-normal">Lab</span>
+      </a>
+
+      <!--
+            data-bs-toggle="collapse"
+            data-bs-target="#navPractice"
+            → membuka menu di layar kecil (hamburger).
+        -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navPractice"
+        aria-controls="navPractice" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navPractice">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#grid">Grid</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#komponen">Komponen</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#form">Form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#js">JS Components</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#utilities">Utilities</a>
+          </li>
+          <!--
+                Dropdown Latihan:
+                Pindah ke halaman latihan CSS / Bootstrap / Tailwind.
+            -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-journal-code me-1"></i>
+              Latihan
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="index.html">
+                  <i class="bi bi-filetype-css me-2"></i>
+                  CSS
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item active" href="bootstrap5.html" aria-current="page">
+                  <i class="bi bi-bootstrap me-2"></i>
+                  Bootstrap
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="tailwind4.html">
+                  <i class="bi bi-wind me-2"></i>
+                  Tailwind
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-light btn-sm" href="#checklist">
+              <i class="bi bi-check2-square me-1"></i>
+              Checklist
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- =====================================================
+           HERO
+           Latihan:
+           - container, row, col-*
+           - typography (display-*, lead)
+           - buttons (btn, btn-*, btn-lg)
+           - Bootstrap Icons
+      ====================================================== -->
+    <section id="home" class="practice-hero py-5">
+      <div class="container py-lg-4">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-lg-7">
+            <span class="badge text-bg-primary mb-3">
+              <i class="bi bi-lightning-charge-fill me-1"></i>
+              Bootstrap 5.3 Practice
+            </span>
+
+            <h1 class="display-5 fw-bold mb-3">
+              Belajar Bootstrap 5 dengan
+              <span class="text-primary">halaman latihan nyata.</span>
+            </h1>
+
+            <p class="lead text-secondary mb-4">
+              Ubah class Bootstrap satu per satu, refresh browser, dan amati
+              hasilnya. Setiap section punya komentar latihan di HTML.
+            </p>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a href="#grid" class="btn btn-primary btn-lg">
+                <i class="bi bi-grid-3x3-gap me-1"></i>
+                Mulai Grid
+              </a>
+              <a href="#komponen" class="btn btn-outline-primary btn-lg">
+                Lihat Komponen
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <!--
+                  Card Bootstrap:
+                  card → card-body → card-title / card-text
+              -->
+            <div class="card border-0 shadow">
+              <div class="card-body p-4">
+                <h2 class="h5 card-title">
+                  <i class="bi bi-journal-code text-primary me-2"></i>
+                  Yang akan dilatih
+                </h2>
+                <ul class="list-unstyled mb-0 mt-3">
+                  <li class="mb-2">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Grid system (container / row / col)
+                  </li>
+                  <li class="mb-2">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Components (button, card, alert, table…)
+                  </li>
+                  <li class="mb-2">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Forms &amp; validation classes
+                  </li>
+                  <li class="mb-2">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    JS components (modal, accordion, toast…)
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Utilities &amp; Bootstrap Icons
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+           PETA MATERI
+           Latihan: card + grid + icons + link anchor
+      ====================================================== -->
+    <section class="py-5">
+      <div class="container">
+        <div class="mb-4">
+          <p class="text-primary fw-semibold text-uppercase small mb-1">
+            Peta Materi
+          </p>
+          <h2 class="fw-bold">Topik Bootstrap 5</h2>
+          <p class="text-secondary mb-0">
+            Klik kartu untuk lompat ke demo. Baca komentar HTML di setiap
+            section.
+          </p>
+        </div>
+
+        <!--
+              row + g-3 = gap gutter
+              col-md-6 col-xl-4 = 2 kolom tablet, 3 kolom desktop
+          -->
+        <div class="row g-3">
+          <div class="col-md-6 col-xl-4">
+            <a href="#grid" class="card h-100 text-decoration-none text-dark shadow-sm border-0">
+              <div class="card-body">
+                <div class="icon-tile mb-3"><i class="bi bi-grid-3x3-gap"></i></div>
+                <h3 class="h5">Grid System</h3>
+                <p class="text-secondary mb-0 small">
+                  container, row, col-*, offset, order, gutter.
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-xl-4">
+            <a href="#typography" class="card h-100 text-decoration-none text-dark shadow-sm border-0">
+              <div class="card-body">
+                <div class="icon-tile mb-3"><i class="bi bi-type"></i></div>
+                <h3 class="h5">Typography</h3>
+                <p class="text-secondary mb-0 small">
+                  display, lead, text-*, fw-*, text alignment.
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-xl-4">
+            <a href="#buttons" class="card h-100 text-decoration-none text-dark shadow-sm border-0">
+              <div class="card-body">
+                <div class="icon-tile mb-3"><i class="bi bi-hand-index"></i></div>
+                <h3 class="h5">Buttons &amp; Icons</h3>
+                <p class="text-secondary mb-0 small">
+                  btn variants, sizes, groups, Bootstrap Icons.
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-xl-4">
+            <a href="#komponen" class="card h-100 text-decoration-none text-dark shadow-sm border-0">
+              <div class="card-body">
+                <div class="icon-tile mb-3"><i class="bi bi-puzzle"></i></div>
+                <h3 class="h5">Components</h3>
+                <p class="text-secondary mb-0 small">
+                  alert, badge, card, list group, progress, table.
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-xl-4">
+            <a href="#form" class="card h-100 text-decoration-none text-dark shadow-sm border-0">
+              <div class="card-body">
+                <div class="icon-tile mb-3"><i class="bi bi-input-cursor-text"></i></div>
+                <h3 class="h5">Forms</h3>
+                <p class="text-secondary mb-0 small">
+                  form-control, select, check, floating labels.
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-xl-4">
+            <a href="#js" class="card h-100 text-decoration-none text-dark shadow-sm border-0">
+              <div class="card-body">
+                <div class="icon-tile mb-3"><i class="bi bi-lightning"></i></div>
+                <h3 class="h5">JS Components</h3>
+                <p class="text-secondary mb-0 small">
+                  accordion, modal, toast, tabs, dropdown, offcanvas.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+           GRID SYSTEM
+           Latihan:
+           - .container / .container-fluid
+           - .row
+           - .col / .col-6 / .col-md-4 / .col-lg-3
+           - .g-* (gutter)
+           - .offset-*
+      ====================================================== -->
+    <section id="grid" class="py-5 bg-light">
+      <div class="container">
+        <div class="mb-4">
+          <p class="text-primary fw-semibold text-uppercase small mb-1">Layout</p>
+          <h2 class="fw-bold">Grid System</h2>
+          <p class="text-secondary">
+            Bootstrap grid = 12 kolom. Jumlah <code>col-*</code> dalam satu
+            <code>row</code> idealnya total 12.
+          </p>
+        </div>
+
+        <h3 class="h6 text-uppercase text-secondary mb-3">Dasar 12 kolom</h3>
+        <div class="row g-2 mb-4 text-center">
+          <div class="col-4">
+            <div class="demo-box">col-4</div>
+          </div>
+          <div class="col-4">
+            <div class="demo-box">col-4</div>
+          </div>
+          <div class="col-4">
+            <div class="demo-box">col-4</div>
+          </div>
+        </div>
+
+        <h3 class="h6 text-uppercase text-secondary mb-3">Responsive breakpoints</h3>
+        <!--
+              col-12        → mobile full width
+              col-md-6      → tablet 50%
+              col-lg-3      → desktop 25%
+          -->
+        <div class="row g-2 mb-4 text-center">
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="demo-box bg-primary text-white">col-lg-3</div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="demo-box bg-primary text-white">col-lg-3</div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="demo-box bg-primary text-white">col-lg-3</div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="demo-box bg-primary text-white">col-lg-3</div>
+          </div>
+        </div>
+
+        <h3 class="h6 text-uppercase text-secondary mb-3">Offset</h3>
+        <div class="row g-2 text-center">
+          <div class="col-md-4 offset-md-4">
+            <div class="demo-box">col-md-4 offset-md-4</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+           TYPOGRAPHY
+      ====================================================== -->
+    <section id="typography" class="py-5">
+      <div class="container">
+        <div class="mb-4">
+          <p class="text-primary fw-semibold text-uppercase small mb-1">Content</p>
+          <h2 class="fw-bold">Typography</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="demo-box bg-white">
+              <p class="display-6">display-6</p>
+              <h1>Heading 1</h1>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <p class="lead">lead — paragraf penekan.</p>
+              <p class="mb-0">Paragraf biasa dengan <a href="#">link Bootstrap</a>.</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="demo-box bg-white">
+              <p class="fw-bold">fw-bold</p>
+              <p class="fw-semibold">fw-semibold</p>
+              <p class="fw-normal">fw-normal</p>
+              <p class="fst-italic">fst-italic</p>
+              <p class="text-primary">text-primary</p>
+              <p class="text-success">text-success</p>
+              <p class="text-danger mb-0">text-danger</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+           BUTTONS + BOOTSTRAP ICONS
+           Latihan:
+           - btn, btn-primary, btn-outline-*
+           - btn-sm / btn-lg
+           - btn-group
+           - <i class="bi bi-...">
+      ====================================================== -->
+    <section id="buttons" class="py-5 bg-light">
+      <div class="container">
+        <div class="mb-4">
+          <p class="text-primary fw-semibold text-uppercase small mb-1">Actions</p>
+          <h2 class="fw-bold">Buttons &amp; Bootstrap Icons</h2>
+          <p class="text-secondary">
+            Icon = class <code>bi bi-nama</code>. Cari nama ikon di
+            icons.getbootstrap.com.
+          </p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <button type="button" class="btn btn-primary">Primary</button>
+          <button type="button" class="btn btn-secondary">Secondary</button>
+          <button type="button" class="btn btn-success">
+            <i class="bi bi-check-lg me-1"></i>Success
+          </button>
+          <button type="button" class="btn btn-danger">
+            <i class="bi bi-trash me-1"></i>Danger
+          </button>
+          <button type="button" class="btn btn-warning">Warning</button>
+          <button type="button" class="btn btn-info">Info</button>
+          <button type="button" class="btn btn-dark">Dark</button>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <button type="button" class="btn btn-outline-primary">Outline</button>
+          <button type="button" class="btn btn-primary btn-sm">Small</button>
+          <button type="button" class="btn btn-primary">Default</button>
+          <button type="button" class="btn btn-primary btn-lg">Large</button>
+          <button type="button" class="btn btn-primary" disabled>Disabled</button>
+        </div>
+
+        <!-- Button group -->
+        <div class="btn-group mb-4" role="group" aria-label="Contoh button group">
+          <button type="button" class="btn btn-outline-primary">
+            <i class="bi bi-list"></i>
+          </button>
+          <button type="button" class="btn btn-outline-primary">
+            <i class="bi bi-grid"></i>
+          </button>
+          <button type="button" class="btn btn-outline-primary">
+            <i class="bi bi-columns-gap"></i>
+          </button>
+        </div>
+
+        <h3 class="h6 text-uppercase text-secondary mb-3">Ikon umum</h3>
+        <div class="d-flex flex-wrap gap-3 fs-3 text-primary">
+          <i class="bi bi-house-door" title="house-door"></i>
+          <i class="bi bi-person" title="person"></i>
+          <i class="bi bi-gear" title="gear"></i>
+          <i class="bi bi-search" title="search"></i>
+          <i class="bi bi-heart" title="heart"></i>
+          <i class="bi bi-star" title="star"></i>
+          <i class="bi bi-bell" title="bell"></i>
+          <i class="bi bi-chat" title="chat"></i>
+          <i class="bi bi-cloud-upload" title="cloud-upload"></i>
+          <i class="bi bi-download" title="download"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+           COMPONENTS
+           alert, badge, card, list-group, progress, table, spinner
+      ====================================================== -->
+    <section id="komponen" class="py-5">
+      <div class="container">
+        <div class="mb-4">
+          <p class="text-primary fw-semibold text-uppercase small mb-1">UI Kit</p>
+          <h2 class="fw-bold">Components dasar</h2>
+        </div>
+
+        <!-- Alerts -->
+        <h3 class="h5 mb-3">
+          <i class="bi bi-exclamation-triangle me-1"></i>
+          Alerts
+        </h3>
+        <!--
+              alert-dismissible + btn-close + data-bs-dismiss="alert"
+              → bisa ditutup (butuh JS Bootstrap)
+          -->
+        <div class="alert alert-primary d-flex align-items-center" role="alert">
+          <i class="bi bi-info-circle-fill me-2"></i>
+          Ini alert primary — cocok untuk informasi.
+        </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <i class="bi bi-check-circle-fill me-1"></i>
+          Alert success yang bisa ditutup.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-warning" role="alert">
+          <i class="bi bi-exclamation-triangle-fill me-1"></i>
+          Peringatan: cek lagi input Anda.
+        </div>
+        <div class="alert alert-danger mb-4" role="alert">
+          <i class="bi bi-x-circle-fill me-1"></i>
+          Error: terjadi kesalahan.
+        </div>
+
+        <!-- Badges -->
+        <h3 class="h5 mb-3">Badges</h3>
+        <div class="mb-4">
+          <span class="badge text-bg-primary">Primary</span>
+          <span class="badge text-bg-secondary">Secondary</span>
+          <span class="badge text-bg-success">Success</span>
+          <span class="badge rounded-pill text-bg-danger">Pill danger</span>
+          <button type="button" class="btn btn-primary position-relative ms-2">
+            Inbox
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              9+
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="row g-4 mb-4">
+          <!-- Cards -->
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-header bg-white fw-semibold">
+                <i class="bi bi-card-heading me-1 text-primary"></i>
+                Card header
+              </div>
+              <div class="card-body">
+                <h4 class="card-title h5">Judul kartu</h4>
+                <p class="card-text text-secondary">
+                  Card = container konten. Coba ubah <code>shadow-sm</code>
+                  jadi <code>shadow</code>.
+                </p>
+                <a href="#form" class="btn btn-sm btn-primary">Ke Form</a>
+              </div>
+              <div class="card-footer text-secondary small">Card footer</div>
+            </div>
+          </div>
+
+          <!-- List group -->
+          <div class="col-md-4">
+            <h3 class="h6 text-secondary">List group</h3>
+            <ul class="list-group shadow-sm">
+              <li class="list-group-item active" aria-current="true">
+                <i class="bi bi-house me-2"></i>Active item
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Notifikasi
+                <span class="badge text-bg-primary rounded-pill">14</span>
+              </li>
+              <li class="list-group-item">Settings</li>
+              <li class="list-group-item disabled" aria-disabled="true">Disabled</li>
+            </ul>
+          </div>
+
+          <!-- Progress + spinner -->
+          <div class="col-md-4">
+            <h3 class="h6 text-secondary">Progress &amp; Spinner</h3>
+            <div class="progress mb-3" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 65%">
+                65%
+              </div>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <span class="text-secondary small">spinner-border / spinner-grow</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <h3 class="h5 mb-3">
+          <i class="bi bi-table me-1"></i>
+          Table
+        </h3>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover align-middle">
+            <thead class="table-primary">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Status</th>
+                <th scope="col">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Andi</td>
+                <td><span class="badge text-bg-success">Aktif</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Budi</td>
+                <td><span class="badge text-bg-warning">Pending</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Citra</td>
+                <td><span class="badge text-bg-secondary">Nonaktif</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+           FORMS
+           Latihan:
+           - form-label, form-control, form-select
+           - form-check (checkbox / radio / switch)
+           - input-group
+           - floating labels
+           - was-validated / is-valid / is-invalid (demo visual)
+      ====================================================== -->
+    <section id="form" class="py-5 bg-light">
+      <div class="container">
+        <div class="mb-4">
+          <p class="text-primary fw-semibold text-uppercase small mb-1">Input</p>
+          <h2 class="fw-bold">Forms</h2>
+          <p class="text-secondary">
+            Class penting: <code>form-control</code>,
+            <code>form-select</code>, <code>form-check</code>,
+            <code>input-group</code>, <code>form-floating</code>.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <form class="card border-0 shadow-sm" action="#" method="get">
+              <div class="card-body p-4">
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Nama</label>
+                  <input type="text" class="form-control" id="nama" placeholder="Masukkan nama" />
+                  <div class="form-text">Teks bantuan memakai form-text.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <!--
+                        input-group: gabungkan teks/ikon dengan input
+                    -->
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <i class="bi bi-envelope"></i>
+                    </span>
+                    <input type="email" class="form-control" id="email" placeholder="nama@email.com" />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="jurusan" class="form-label">Jurusan</label>
+                  <select class="form-select" id="jurusan">
+                    <option selected disabled>Pilih jurusan...</option>
+                    <option>Informatika</option>
+                    <option>Sistem Informasi</option>
+                    <option>Teknik Komputer</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="pesan" class="form-label">Pesan</label>
+                  <textarea class="form-control" id="pesan" rows="3"></textarea>
+                </div>
+
+                <!-- Checkbox / radio / switch -->
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="setuju" />
+                    <label class="form-check-label" for="setuju">
+                      Saya setuju dengan ketentuan
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="level" id="pemula" checked />
+                    <label class="form-check-label" for="pemula">Pemula</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="level" id="lanjutan" />
+                    <label class="form-check-label" for="lanjutan">Lanjutan</label>
+                  </div>
+                  <div class="form-check form-switch mt-2">
+                    <input class="form-check-input" type="checkbox" id="newsletter" />
+                    <label class="form-check-label" for="newsletter">
+                      Langganan newsletter (form-switch)
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Floating labels -->
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingNama" placeholder="Nama lengkap" />
+                  <label for="floatingNama">Floating label</label>
+                </div>
+
+                <!-- Validasi visual (demo class saja) -->
+                <div class="mb-3">
+                  <label for="validDemo" class="form-label">Contoh valid</label>
+                  <input type="text" class="form-control is-valid" id="validDemo" value="OK" />
+                  <div class="valid-feedback">Terlihat bagus!</div>
+                </div>
+                <div class="mb-4">
+                  <label for="invalidDemo" class="form-label">Contoh invalid</label>
+                  <input type="text" class="form-control is-invalid" id="invalidDemo" value="" />
+                  <div class="invalid-feedback">Field ini wajib diisi.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-send me-1"></i>
+                  Kirim
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="alert alert-info">
+              <h3 class="h6 alert-heading">
+                <i class="bi bi-lightbulb me-1"></i>
+                Tips latihan form
+              </h3>
+              <ol class="mb-0 small">
+                <li>Ganti <code>form-control</code> jadi <code>form-control-lg</code>.</li>
+                <li>Tambah class <code>was-validated</code> pada <code>&lt;form&gt;</code>.</li>
+                <li>Coba <code>form-select-sm</code> pada select.</li>
+                <li>Ubah ikon di <code>input-group-text</code>.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+           JS COMPONENTS
+           Membutuhkan bootstrap.bundle.min.js
+           - accordion
+           - tabs
+           - dropdown
+           - modal
+           - toast
+           - offcanvas
+           - tooltip / popover (diinisialisasi di bawah)
+      ====================================================== -->
+    <section id="js" class="py-5">
+      <div class="container">
+        <div class="mb-4">
+          <p class="text-primary fw-semibold text-uppercase small mb-1">Interaktif</p>
+          <h2 class="fw-bold">JavaScript Components</h2>
+          <p class="text-secondary">
+            Komponen ini butuh file
+            <code>bootstrap.bundle.min.js</code> di akhir <code>&lt;body&gt;</code>.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Accordion -->
+          <div class="col-lg-6">
+            <h3 class="h5 mb-3">
+              <i class="bi bi-chevron-bar-expand me-1"></i>
+              Accordion
+            </h3>
+            <div class="accordion shadow-sm" id="accordionPractice">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accOne"
+                    aria-expanded="true" aria-controls="accOne">
+                    Apa itu Bootstrap?
+                  </button>
+                </h2>
+                <div id="accOne" class="accordion-collapse collapse show" data-bs-parent="#accordionPractice">
+                  <div class="accordion-body">
+                    Framework CSS/JS untuk membangun UI responsif lebih cepat
+                    dengan class siap pakai.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#accTwo" aria-expanded="false" aria-controls="accTwo">
+                    Apa itu Bootstrap Icons?
+                  </button>
+                </h2>
+                <div id="accTwo" class="accordion-collapse collapse" data-bs-parent="#accordionPractice">
+                  <div class="accordion-body">
+                    Kumpulan ikon resmi. Pakai
+                    <code>&lt;i class="bi bi-nama"&gt;&lt;/i&gt;</code>.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#accThree" aria-expanded="false" aria-controls="accThree">
+                    Kenapa pakai bundle JS?
+                  </button>
+                </h2>
+                <div id="accThree" class="accordion-collapse collapse" data-bs-parent="#accordionPractice">
+                  <div class="accordion-body">
+                    Bundle sudah termasuk Popper untuk positioning dropdown,
+                    tooltip, dan popover.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs + Dropdown -->
+          <div class="col-lg-6">
+            <h3 class="h5 mb-3">
+              <i class="bi bi-folder2-open me-1"></i>
+              Nav tabs &amp; Dropdown
+            </h3>
+
+            <ul class="nav nav-tabs" id="practiceTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tab-home" data-bs-toggle="tab" data-bs-target="#pane-home"
+                  type="button" role="tab">
+                  Home
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab-profile" data-bs-toggle="tab" data-bs-target="#pane-profile"
+                  type="button" role="tab">
+                  Profile
+                </button>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                  aria-expanded="false">
+                  Lainnya
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#utilities">Utilities</a></li>
+                  <li><a class="dropdown-item" href="#checklist">Checklist</a></li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li><a class="dropdown-item" href="#home">Kembali ke Home</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <div class="tab-content border border-top-0 p-3 rounded-bottom mb-4">
+              <div class="tab-pane fade show active" id="pane-home" role="tabpanel">
+                Konten tab <strong>Home</strong>. Ganti teks ini saat latihan.
+              </div>
+              <div class="tab-pane fade" id="pane-profile" role="tabpanel">
+                Konten tab <strong>Profile</strong>. Coba tambah form kecil di sini.
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <!-- Modal trigger -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#practiceModal">
+                <i class="bi bi-window me-1"></i>
+                Buka Modal
+              </button>
+
+              <!-- Offcanvas trigger -->
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#practiceOffcanvas">
+                <i class="bi bi-layout-sidebar-inset me-1"></i>
+                Offcanvas
+              </button>
+
+              <!-- Toast trigger -->
+              <button type="button" class="btn btn-success" id="btnShowToast">
+                <i class="bi bi-bell me-1"></i>
+                Tampilkan Toast
+              </button>
+
+              <!-- Tooltip -->
+              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
+                data-bs-title="Ini Tooltip Bootstrap 5">
+                Tooltip
+              </button>
+
+              <!-- Popover -->
+              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="popover" data-bs-title="Popover"
+                data-bs-content="Konten popover muncul saat diklik.">
+                Popover
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+           UTILITIES
+           spacing (m-*, p-*), colors, flex, display, border, shadow
+      ====================================================== -->
+    <section id="utilities" class="py-5 bg-light">
+      <div class="container">
+        <div class="mb-4">
+          <p class="text-primary fw-semibold text-uppercase small mb-1">Helpers</p>
+          <h2 class="fw-bold">Utilities</h2>
+          <p class="text-secondary">
+            Utility class = styling cepat tanpa CSS custom.
+          </p>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="p-3 mb-2 bg-primary text-white rounded">bg-primary</div>
+            <div class="p-3 mb-2 bg-success text-white rounded">bg-success</div>
+            <div class="p-3 mb-2 bg-warning rounded">bg-warning</div>
+            <div class="p-3 bg-dark text-white rounded">bg-dark</div>
+          </div>
+
+          <div class="col-md-4">
+            <!--
+                  Spacing scale Bootstrap: 0–5
+                  m = margin, p = padding
+                  t/b/s/e/x/y = arah
+              -->
+            <div class="border bg-white p-2 mb-2">p-2 mb-2</div>
+            <div class="border bg-white p-3 mb-3">p-3 mb-3</div>
+            <div class="border bg-white p-4">p-4</div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="d-flex justify-content-between align-items-center border bg-white p-3 rounded mb-2">
+              <span>flex</span>
+              <span class="badge text-bg-primary">between</span>
+            </div>
+            <div class="border border-2 border-primary rounded p-3 mb-2">border-primary</div>
+            <div class="shadow-sm bg-white p-3 rounded mb-2">shadow-sm</div>
+            <div class="shadow bg-white p-3 rounded">shadow</div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <p class="mb-2 fw-semibold">Display responsive</p>
+          <div class="demo-box">
+            <span class="d-none d-md-inline text-success">
+              Terlihat mulai md ke atas (d-none d-md-inline)
+            </span>
+            <span class="d-inline d-md-none text-danger">
+              Terlihat hanya di mobile (d-inline d-md-none)
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+           CHECKLIST
+      ====================================================== -->
+    <section id="checklist" class="py-5">
+      <div class="container">
+        <div class="mb-4">
+          <p class="text-primary fw-semibold text-uppercase small mb-1">Evaluasi</p>
+          <h2 class="fw-bold">Checklist latihan Bootstrap 5</h2>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="h5 text-primary">
+                  <i class="bi bi-layout-wtf me-1"></i>
+                  Layout
+                </h3>
+                <ul class="mb-0">
+                  <li>container / container-fluid</li>
+                  <li>row, col-*, g-*</li>
+                  <li>breakpoint (sm/md/lg/xl/xxl)</li>
+                  <li>offset &amp; order</li>
+                  <li>navbar + collapse</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="h5 text-primary">
+                  <i class="bi bi-ui-checks-grid me-1"></i>
+                  Components
+                </h3>
+                <ul class="mb-0">
+                  <li>button, badge, alert</li>
+                  <li>card, list group, table</li>
+                  <li>progress, spinner</li>
+                  <li>form-control, select, check</li>
+                  <li>Bootstrap Icons (<code>bi</code>)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="h5 text-primary">
+                  <i class="bi bi-lightning-charge me-1"></i>
+                  JS &amp; Utilities
+                </h3>
+                <ul class="mb-0">
+                  <li>accordion, tabs, dropdown</li>
+                  <li>modal, toast, offcanvas</li>
+                  <li>tooltip &amp; popover</li>
+                  <li>spacing, color, flex, display</li>
+                  <li>border &amp; shadow utilities</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+  <footer class="bg-dark text-white pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-md-6">
+          <h3 class="h5">
+            <i class="bi bi-bootstrap-fill text-primary me-1"></i>
+            BSLab
+          </h3>
+          <p class="text-secondary mb-0">
+            Halaman latihan Bootstrap 5.3 + Bootstrap Icons — PABWE Praktikum 2.
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#home" class="link-light text-decoration-none me-3">Home</a>
+          <a href="#grid" class="link-light text-decoration-none me-3">Grid</a>
+          <a href="#form" class="link-light text-decoration-none me-3">Form</a>
+          <a href="index.html" class="link-light text-decoration-none">CSS Lab</a>
+        </div>
+      </div>
+      <div class="border-top border-secondary pt-3 text-center text-secondary small">
+        © 2026 Delcom
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast container (pojok kanan bawah) -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="practiceToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-bootstrap-fill text-primary me-2"></i>
+        <strong class="me-auto">BSLab</strong>
+        <small>baru saja</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Toast berhasil ditampilkan! Ini komponen JS Bootstrap.
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="practiceModal" tabindex="-1" aria-labelledby="practiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="practiceModalLabel">
+            <i class="bi bi-window me-1 text-primary"></i>
+            Modal Practice
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Modal dibuka lewat
+          <code>data-bs-toggle="modal"</code> dan
+          <code>data-bs-target="#practiceModal"</code>.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Tutup
+          </button>
+          <button type="button" class="btn btn-primary">Simpan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Offcanvas -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="practiceOffcanvas" aria-labelledby="offcanvasLabel">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title h5" id="offcanvasLabel">
+        <i class="bi bi-layout-sidebar-inset me-1"></i>
+        Offcanvas
+      </h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>
+        Offcanvas cocok untuk menu samping di mobile. Coba ubah
+        <code>offcanvas-end</code> menjadi <code>offcanvas-start</code>.
+      </p>
+      <a href="#checklist" class="btn btn-primary" data-bs-dismiss="offcanvas">
+        Ke Checklist
+      </a>
+    </div>
+  </div>
+
+  <!--
+        BOOTSTRAP JS BUNDLE (wajib untuk komponen interaktif)
+        Letakkan sebelum penutup </body>
+    -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+  <!--
+        Inisialisasi Tooltip, Popover, dan Toast.
+        Beberapa komponen perlu di-init manual via JS.
+    -->
+  <script>
+    // Tooltip & Popover
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    [...tooltipTriggerList].map((el) => new bootstrap.Tooltip(el));
+
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    [...popoverTriggerList].map((el) => new bootstrap.Popover(el));
+
+    // Toast
+    const toastEl = document.getElementById("practiceToast");
+    const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
+    document.getElementById("btnShowToast").addEventListener("click", () => {
+      toast.show();
+    });
+  </script>
+</body>
+
+</html>
