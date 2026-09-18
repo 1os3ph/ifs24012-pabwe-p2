@@ -1,880 +1,173 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8" />
-
-    <!--
-        Membuat halaman responsive terhadap ukuran layar.
-        Wajib untuk website modern.
-    -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Membuat judul halaman -->
-    <title>CSS Complete Practice</title>
-
-    <!--
-        Favicon: ikon tab browser.
-        Menggunakan logo lokal dari assets/img.
-    -->
-    <link rel="icon" href="assets/img/logo.png" type="image/png" />
-
-    <!--
-        GOOGLE FONTS
-        -------------------------------------------------
-        Rekomendasi pasangan font untuk UI modern:
-
-        1. Outfit        → heading / logo / tombol
-           Geometric sans, tegas, cocok untuk judul.
-
-        2. Source Sans 3 → body / paragraf / form
-           Sangat mudah dibaca untuk teks panjang.
-
-        3. JetBrains Mono → cuplikan kode
-           Monospace dengan legibility tinggi.
-
-        preconnect mempercepat koneksi ke server Google Fonts.
-        display=swap mencegah teks "invisible" saat font loading.
-    -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-        rel="stylesheet" />
-
-    <!--
-        External CSS
-        Artinya seluruh styling kita simpan di file style.css
-        Coba buka DevTools → tab Elements → lihat Styles.
-    -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenith Intelligence - Solusi Kecerdasan Buatan</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
-    <!-- =====================================================
-         HEADER
 
-         Latihan:
-         - semantic HTML (<header>, <nav>)
-         - Flexbox (navbar)
-         - position: sticky
-         - pseudo-class :hover
-    ====================================================== -->
+  <!-- Navbar -->
+  <header class="header">
+    <div class="container navbar">
+      <div class="logo">
+        <a href="index.html">Zenith <span>Intelligence</span></a>
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="cv.html" class="btn-outline">CV Saya</a></li>
+        </ul>
+      </nav>
+      <!-- Hamburger Menu for Mobile -->
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </header>
 
-    <header class="site-header">
-        <div class="container navbar">
-            <!-- Logo: class selector .logo + nested span -->
-            <a href="#home" class="logo"> CSS<span>Lab</span> </a>
-
-            <!--
-            Navigation anchors (#id) menghubungkan ke section.
-            Ini contoh penggunaan ID di HTML.
-        -->
-            <nav class="nav-menu">
-                <a href="#home">Home</a>
-                <a href="#cards">Materi</a>
-                <a href="#selectors">Selektor</a>
-                <a href="#layout">Layout</a>
-                <a href="#efek">Efek</a>
-                <a href="#form">Form</a>
-            </nav>
-
-            <!--
-            Menu Latihan:
-            Pindah antar halaman latihan (CSS / Bootstrap / Tailwind).
-            Hover untuk membuka submenu.
-        -->
-            <div class="nav-latihan">
-                <button type="button" class="nav-latihan-toggle" aria-expanded="false">
-                    Latihan ▾
-                </button>
-                <div class="nav-latihan-menu">
-                    <a href="index.html" class="is-active">CSS</a>
-                    <a href="bootstrap5.html">Bootstrap</a>
-                    <a href="tailwind4.html">Tailwind</a>
-                </div>
-            </div>
-
-            <a href="#ringkasan" class="btn btn-primary"> Ringkasan </a>
+  <main>
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+      <div class="container hero-content">
+        <h1>Transformasi Bisnis dengan <span class="highlight">Kecerdasan Buatan</span></h1>
+        <p>Kami membantu Anda mengotomatiskan proses, memahami data, dan meningkatkan interaksi pelanggan menggunakan teknologi AI terkini.</p>
+        <div class="hero-buttons">
+          <a href="#layanan" class="btn btn-primary">Lihat Layanan</a>
+          <a href="#kontak" class="btn btn-secondary">Konsultasi Gratis</a>
         </div>
-    </header>
-
-    <main>
-        <!-- =====================================================
-           HERO SECTION
-
-           Latihan:
-           - CSS variables (warna primary)
-           - typography + Google Fonts
-           - clamp() untuk font-size responsif
-           - linear-gradient
-           - pseudo-element ::before
-           - CSS Grid (hero-content)
-           - transform + animation (floating-card)
-           - transition (tombol)
-      ====================================================== -->
-
-        <section id="home" class="hero">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <p class="eyebrow">CSS COMPLETE PRACTICE</p>
-
-                    <h1>
-                        Belajar CSS dengan
-                        <span>membangun halaman nyata.</span>
-                    </h1>
-
-                    <p class="hero-description">
-                        Halaman ini adalah laboratorium latihan. Setiap section punya tip
-                        komentar di HTML dan CSS. Ubah property satu per satu, lalu lihat
-                        hasilnya di browser.
-                    </p>
-
-                    <div class="hero-buttons">
-                        <a href="#cards" class="btn btn-primary"> Mulai Belajar </a>
-                        <a href="#selectors" class="btn btn-outline"> Coba Selektor </a>
-                    </div>
-                </div>
-
-                <!--
-              Visual dekoratif:
-              - .hero-visual::before → lingkaran blur (pseudo-element)
-              - .floating-card → transform + @keyframes
-              - .code-line → font mono (JetBrains Mono)
-          -->
-                <div class="hero-visual">
-                    <div class="floating-card">
-                        <div class="code-line"><span>.website</span> {</div>
-                        <div class="code-line indent">display: grid;</div>
-                        <div class="code-line indent">gap: 1rem;</div>
-                        <div class="code-line indent">font-family: Outfit;</div>
-                        <div class="code-line">}</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           PETA MATERI / CARDS
-
-           Latihan:
-           - CSS Grid (auto-fit + minmax)
-           - gap, border, box-shadow, border-radius
-           - :hover + transform
-           - pseudo-element ::before pada card
-      ====================================================== -->
-
-        <section id="cards" class="section">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">PETA MATERI</p>
-                    <h2>Materi CSS yang akan kamu latih</h2>
-                    <p>
-                        Klik “Pelajari” untuk lompat ke section demo. Setiap topik punya
-                        komentar jelas di file CSS.
-                    </p>
-                </div>
-
-                <!--
-              GRID CONTAINER
-              repeat(auto-fit, minmax(250px, 1fr))
-              → kolom menyesuaikan lebar layar secara otomatis.
-          -->
-                <div class="cards-grid">
-                    <article class="card">
-                        <div class="card-icon">01</div>
-                        <h3>Selectors</h3>
-                        <p>
-                            Element, class, id, attribute, combinator, pseudo-class, dan
-                            pseudo-element.
-                        </p>
-                        <a href="#selectors" class="card-link">Pelajari →</a>
-                    </article>
-
-                    <article class="card featured">
-                        <div class="card-icon">02</div>
-                        <h3>Variables</h3>
-                        <p>
-                            Simpan warna, ukuran, dan font di :root agar styling konsisten.
-                        </p>
-                        <a href="#variables" class="card-link">Pelajari →</a>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-icon">03</div>
-                        <h3>Box Model</h3>
-                        <p>Pahami content, padding, border, margin, dan box-sizing.</p>
-                        <a href="#box-model" class="card-link">Pelajari →</a>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-icon">04</div>
-                        <h3>Flexbox</h3>
-                        <p>
-                            Atur elemen satu dimensi: horizontal atau vertical dengan mudah.
-                        </p>
-                        <a href="#flexbox" class="card-link">Pelajari →</a>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-icon">05</div>
-                        <h3>Grid</h3>
-                        <p>
-                            Layout dua dimensi: rows, columns, gap, dan grid-template-areas.
-                        </p>
-                        <a href="#layout" class="card-link">Pelajari →</a>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-icon">06</div>
-                        <h3>Position</h3>
-                        <p>relative, absolute, fixed, sticky, dan z-index.</p>
-                        <a href="#position" class="card-link">Pelajari →</a>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-icon">07</div>
-                        <h3>Efek &amp; Animasi</h3>
-                        <p>transition, transform, dan @keyframes untuk UI interaktif.</p>
-                        <a href="#efek" class="card-link">Pelajari →</a>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-icon">08</div>
-                        <h3>Functions</h3>
-                        <p>clamp(), calc(), min(), max(), dan minmax() untuk responsive.</p>
-                        <a href="#functions" class="card-link">Pelajari →</a>
-                    </article>
-
-                    <article class="card">
-                        <div class="card-icon">09</div>
-                        <h3>Typography</h3>
-                        <p>
-                            Google Fonts: Outfit, Source Sans 3, dan JetBrains Mono.
-                        </p>
-                        <a href="#typography" class="card-link">Pelajari →</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           SELECTORS DEMO
-
-           Latihan:
-           - element selector   → p, h3
-           - class selector     → .selector-box
-           - id selector        → #highlight-box
-           - attribute selector → [data-role="demo"]
-           - combinator         → .parent > .child
-           - pseudo-class       → :hover, :nth-child
-           - pseudo-element     → ::before, ::after
-      ====================================================== -->
-
-        <section id="selectors" class="section section-alt">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">SELECTORS</p>
-                    <h2>Mengenal jenis-jenis selektor CSS</h2>
-                    <p>
-                        Hover kotak di bawah. Lihat di DevTools selector mana yang
-                        aktif. Bandingkan komentar di style.css bagian “SELECTORS DEMO”.
-                    </p>
-                </div>
-
-                <div class="selector-playground">
-                    <!-- Class selector: .selector-box -->
-                    <div class="selector-box" data-role="demo">
-                        <span class="selector-label">.selector-box</span>
-                        <strong>Class selector</strong>
-                        <p>Memilih element berdasarkan class.</p>
-                    </div>
-
-                    <!-- ID selector: #highlight-box -->
-                    <div id="highlight-box" class="selector-box">
-                        <span class="selector-label">#highlight-box</span>
-                        <strong>ID selector</strong>
-                        <p>Memilih SATU element unik berdasarkan id.</p>
-                    </div>
-
-                    <!-- Attribute selector: [data-role="demo"] sudah dipakai di atas -->
-                    <div class="selector-box parent-demo">
-                        <span class="selector-label">.parent &gt; .child</span>
-                        <strong>Combinator</strong>
-                        <!-- Child combinator: hanya anak langsung -->
-                        <p class="child">Ini child langsung (terpengaruh).</p>
-                        <div>
-                            <p class="child nested">Ini nested (tidak ikut &gt;).</p>
-                        </div>
-                    </div>
-
-                    <!-- Pseudo-element demo -->
-                    <div class="selector-box pseudo-demo">
-                        <span class="selector-label">::before / ::after</span>
-                        <strong>Pseudo-element</strong>
-                        <p>Ada badge virtual di pojok tanpa HTML tambahan.</p>
-                    </div>
-                </div>
-
-                <!--
-              :nth-child demo
-              Item genap / ganjil diberi warna berbeda di CSS.
-          -->
-                <div class="nth-demo">
-                    <div class="nth-item">1 — ganjil</div>
-                    <div class="nth-item">2 — genap</div>
-                    <div class="nth-item">3 — ganjil</div>
-                    <div class="nth-item">4 — genap</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           CSS VARIABLES DEMO
-
-           Latihan:
-           - :root { --nama: value; }
-           - var(--nama)
-           - mengubah satu variable mengubah banyak tempat
-      ====================================================== -->
-
-        <section id="variables" class="section">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">CSS VARIABLES</p>
-                    <h2>Warna &amp; token dari :root</h2>
-                    <p>
-                        Ubah nilai <code>--primary</code> di CSS, lalu refresh. Semua
-                        swatch dan aksen biru akan ikut berubah.
-                    </p>
-                </div>
-
-                <div class="token-grid">
-                    <div class="token-card token-primary">
-                        <span class="token-swatch"></span>
-                        <code>--primary</code>
-                        <small>#2563eb</small>
-                    </div>
-                    <div class="token-card token-text">
-                        <span class="token-swatch"></span>
-                        <code>--text</code>
-                        <small>#172033</small>
-                    </div>
-                    <div class="token-card token-border">
-                        <span class="token-swatch"></span>
-                        <code>--border</code>
-                        <small>#e2e8f0</small>
-                    </div>
-                    <div class="token-card token-soft">
-                        <span class="token-swatch"></span>
-                        <code>--primary-soft</code>
-                        <small>#eff6ff</small>
-                    </div>
-                    <div class="token-card token-radius">
-                        <span class="token-swatch radius-demo"></span>
-                        <code>--radius</code>
-                        <small>16px</small>
-                    </div>
-                    <div class="token-card token-font">
-                        <span class="token-swatch font-demo">Aa</span>
-                        <code>--font-display</code>
-                        <small>Outfit</small>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           BOX MODEL DEMO
-
-           Latihan:
-           - content / padding / border / margin
-           - width, max-width, box-sizing
-           - box-shadow sebagai “outline” visual
-      ====================================================== -->
-
-        <section id="box-model" class="section section-alt">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">BOX MODEL</p>
-                    <h2>Eksperimen Box Model</h2>
-                    <p>
-                        Dari luar ke dalam: shadow luar → border tebal → padding →
-                        content. Ubah angka padding/border di CSS dan amati.
-                    </p>
-                </div>
-
-                <!--
-              Struktur visual box model:
-              .box-model-demo  ≈ margin/outer ring (via box-shadow)
-              border           ≈ border biru
-              padding          ≈ area biru muda
-              .box-content     ≈ content
-          -->
-                <div class="box-model-demo">
-                    <div class="box-content">
-                        <strong>CONTENT</strong>
-                        <span>Ini adalah area content.</span>
-                    </div>
-                </div>
-
-                <ul class="tip-list">
-                    <li>
-                        <strong>content</strong> — teks / gambar di dalam element
-                    </li>
-                    <li>
-                        <strong>padding</strong> — jarak di dalam border
-                    </li>
-                    <li>
-                        <strong>border</strong> — garis tepi element
-                    </li>
-                    <li>
-                        <strong>margin</strong> — jarak ke element tetangga
-                    </li>
-                    <li>
-                        <strong>box-sizing: border-box</strong> — width termasuk padding +
-                        border
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           FLEXBOX DEMO
-
-           Latihan:
-           - display: flex
-           - flex-wrap, gap, align-items
-           - flex: 1 1 180px pada item
-           - :hover + transform pada item
-      ====================================================== -->
-
-        <section id="flexbox" class="section">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">FLEXBOX</p>
-                    <h2>Contoh Flexbox</h2>
-                    <p>
-                        Parent memakai <code>display: flex</code>. Anak-anak menjadi flex
-                        items. Coba ubah <code>justify-content</code> dan
-                        <code>flex-direction</code>.
-                    </p>
-                </div>
-
-                <div class="flex-demo">
-                    <div class="flex-item">Item 1</div>
-                    <div class="flex-item">Item 2</div>
-                    <div class="flex-item">Item 3</div>
-                    <div class="flex-item">Item 4</div>
-                </div>
-
-                <ul class="tip-list">
-                    <li>
-                        <strong>main axis</strong> — diatur oleh justify-content
-                    </li>
-                    <li>
-                        <strong>cross axis</strong> — diatur oleh align-items
-                    </li>
-                    <li>
-                        <strong>flex-wrap: wrap</strong> — item pindah baris jika sempit
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           GRID LAYOUT
-
-           Latihan:
-           - grid-template-columns
-           - grid-template-areas
-           - gap
-           - nested grid (stats-grid)
-           - responsive: 1 kolom di mobile
-      ====================================================== -->
-
-        <section id="layout" class="section section-alt">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">CSS GRID</p>
-                    <h2>Dashboard Layout</h2>
-                    <p>
-                        Sidebar dan main memakai <code>grid-template-areas</code>. Pada
-                        layar kecil, area disusun vertikal lewat media query.
-                    </p>
-                </div>
-
-                <div class="dashboard">
-                    <aside class="sidebar">
-                        <h3>Sidebar</h3>
-                        <ul>
-                            <li>Dashboard</li>
-                            <li>Profile</li>
-                            <li>Settings</li>
-                            <li>Reports</li>
-                        </ul>
-                    </aside>
-
-                    <div class="dashboard-main">
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <span>Users</span>
-                                <strong>1,245</strong>
-                            </div>
-                            <div class="stat-card">
-                                <span>Orders</span>
-                                <strong>856</strong>
-                            </div>
-                            <div class="stat-card">
-                                <span>Revenue</span>
-                                <strong>$12.4K</strong>
-                            </div>
-                        </div>
-
-                        <div class="chart-placeholder">
-                            <span>Chart Area (background pattern)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           POSITIONING
-
-           Latihan:
-           - position: relative (parent)
-           - position: absolute (child)
-           - top / right
-           - z-index
-           - position: fixed (lihat tombol back-to-top)
-           - position: sticky (lihat header)
-      ====================================================== -->
-
-        <section id="position" class="section">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">POSITION</p>
-                    <h2>Relative, Absolute, Fixed, Sticky</h2>
-                    <p>
-                        Badge oranye memakai <code>absolute</code> relatif ke parent
-                        <code>relative</code>. Header memakai sticky; tombol ↑ memakai
-                        fixed.
-                    </p>
-                </div>
-
-                <div class="position-demo">
-                    <div class="position-box">
-                        Parent (relative)
-                        <div class="absolute-box">Absolute</div>
-                    </div>
-                </div>
-
-                <ul class="tip-list">
-                    <li>
-                        <strong>static</strong> — default, mengikuti alur dokumen
-                    </li>
-                    <li>
-                        <strong>relative</strong> — tetap di alur, jadi acuan absolute
-                    </li>
-                    <li>
-                        <strong>absolute</strong> — keluar alur, posisi dari parent
-                        positioned
-                    </li>
-                    <li>
-                        <strong>fixed</strong> — menempel ke viewport (back-to-top)
-                    </li>
-                    <li>
-                        <strong>sticky</strong> — sticky sampai batas scroll (header)
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           TRANSFORM, TRANSITION, ANIMATION
-
-           Latihan:
-           - transition pada hover
-           - transform: translate / scale / rotate
-           - @keyframes + animation
-      ====================================================== -->
-
-        <section id="efek" class="section section-alt">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">EFEK &amp; ANIMASI</p>
-                    <h2>Transition, Transform, Keyframes</h2>
-                    <p>
-                        Hover setiap kartu. Bandingkan transisi halus vs animasi terus
-                        berjalan (pulse).
-                    </p>
-                </div>
-
-                <div class="effect-grid">
-                    <!-- Transition + translate -->
-                    <div class="effect-card effect-lift">
-                        <h3>Transition</h3>
-                        <p>Hover → naik perlahan (translateY + shadow).</p>
-                        <code>transition: 0.25s ease</code>
-                    </div>
-
-                    <!-- Transform scale -->
-                    <div class="effect-card effect-scale">
-                        <h3>Transform Scale</h3>
-                        <p>Hover → membesar sedikit.</p>
-                        <code>transform: scale(1.05)</code>
-                    </div>
-
-                    <!-- Transform rotate -->
-                    <div class="effect-card effect-rotate">
-                        <h3>Transform Rotate</h3>
-                        <p>Hover → miring 3 derajat.</p>
-                        <code>transform: rotate(3deg)</code>
-                    </div>
-
-                    <!-- Continuous animation -->
-                    <div class="effect-card effect-pulse">
-                        <h3>Keyframes</h3>
-                        <p>Animasi pulse tanpa hover.</p>
-                        <code>animation: pulse 2s infinite</code>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           CSS FUNCTIONS
-
-           Latihan:
-           - clamp(min, preferred, max)
-           - calc(a + b)
-           - min() / max()
-           - minmax() di grid
-      ====================================================== -->
-
-        <section id="functions" class="section">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">CSS FUNCTIONS</p>
-                    <h2>clamp(), calc(), minmax()</h2>
-                    <p>
-                        Ubah lebar jendela browser. Kotak “clamp” akan mengubah ukuran
-                        font secara mulus antara min dan max.
-                    </p>
-                </div>
-
-                <div class="function-grid">
-                    <div class="function-card">
-                        <span class="eyebrow">clamp()</span>
-                        <p class="clamp-text">Ukuran ini mengikuti viewport.</p>
-                        <code>font-size: clamp(1rem, 4vw, 2rem)</code>
-                    </div>
-
-                    <div class="function-card">
-                        <span class="eyebrow">calc()</span>
-                        <div class="calc-bar"></div>
-                        <code>width: calc(100% - 48px)</code>
-                    </div>
-
-                    <div class="function-card">
-                        <span class="eyebrow">minmax()</span>
-                        <div class="minmax-row">
-                            <div>A</div>
-                            <div>B</div>
-                            <div>C</div>
-                        </div>
-                        <code>grid-template-columns: repeat(3, minmax(80px, 1fr))</code>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           FORM
-
-           Latihan:
-           - attribute selector input[type="..."]
-           - :focus
-           - ::placeholder
-           - label + checkbox flex
-           - button :hover
-      ====================================================== -->
-
-        <section id="form" class="section section-alt">
-            <div class="container form-container">
-                <div class="section-heading">
-                    <p class="eyebrow">FORM</p>
-                    <h2>Latihan Form Styling</h2>
-                    <p>
-                        Klik input dan lihat efek <code>:focus</code>. Placeholder
-                        memakai pseudo-element <code>::placeholder</code>.
-                    </p>
-                </div>
-
-                <form class="practice-form" action="#" method="get">
-                    <div class="form-group">
-                        <label for="name">Nama</label>
-                        <input id="name" type="text" placeholder="Masukkan nama..." />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="email" type="email" placeholder="nama@email.com" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Pesan</label>
-                        <textarea id="message" rows="5" placeholder="Tulis pesan..."></textarea>
-                    </div>
-
-                    <label class="checkbox">
-                        <input type="checkbox" />
-                        <span>Saya memahami CSS.</span>
-                    </label>
-
-                    <button type="submit" class="btn btn-primary">Kirim Form</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           TYPOGRAPHY & GOOGLE FONTS
-
-           Latihan:
-           - font-family via CSS variables
-           - line-height, letter-spacing, font-weight
-           - hierarki heading vs body vs mono
-      ====================================================== -->
-
-        <section id="typography" class="section">
-            <div class="container typography-demo">
-                <div>
-                    <p class="eyebrow">TYPOGRAPHY</p>
-                    <h2>Typography adalah bagian penting dari desain website.</h2>
-                    <p>
-                        Halaman ini memakai Google Fonts: <strong>Outfit</strong> untuk
-                        judul, <strong>Source Sans 3</strong> untuk teks body, dan
-                        <strong>JetBrains Mono</strong> untuk cuplikan kode. Ukuran,
-                        ketebalan, line-height, dan letter-spacing diatur lewat CSS agar
-                        hierarki tetap konsisten.
-                    </p>
-
-                    <div class="font-samples">
-                        <div class="font-sample sample-display">
-                            <span>Outfit</span>
-                            <p>The quick brown fox — Display</p>
-                        </div>
-                        <div class="font-sample sample-body">
-                            <span>Source Sans 3</span>
-                            <p>The quick brown fox — Body text</p>
-                        </div>
-                        <div class="font-sample sample-mono">
-                            <span>JetBrains Mono</span>
-                            <p>const css = "practice";</p>
-                        </div>
-                    </div>
-                </div>
-
-                <blockquote>
-                    "CSS bukan sekadar membuat website menjadi berwarna."
-                    <cite>— CSS Practice</cite>
-                </blockquote>
-            </div>
-        </section>
-
-        <!-- =====================================================
-           RINGKASAN / CHECKLIST LATIHAN
-
-           Tujuan:
-           Memberi mahasiswa daftar cek apa saja yang sudah
-           dipelajari di halaman ini.
-      ====================================================== -->
-
-        <section id="ringkasan" class="section section-alt">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">CHECKLIST</p>
-                    <h2>Ringkasan materi latihan</h2>
-                    <p>
-                        Centang secara mental. Jika belum paham, kembali ke section
-                        terkait dan ubah CSS-nya.
-                    </p>
-                </div>
-
-                <div class="checklist-grid">
-                    <div class="checklist-card">
-                        <h3>Dasar</h3>
-                        <ul>
-                            <li>CSS Variables (:root + var)</li>
-                            <li>Universal &amp; element selector</li>
-                            <li>Class &amp; ID selector</li>
-                            <li>Attribute selector</li>
-                            <li>Combinator (&gt;, spasi)</li>
-                        </ul>
-                    </div>
-
-                    <div class="checklist-card">
-                        <h3>Layout</h3>
-                        <ul>
-                            <li>Box Model + box-sizing</li>
-                            <li>Flexbox (gap, wrap, flex)</li>
-                            <li>Grid (columns, areas, minmax)</li>
-                            <li>Position (relative/absolute/fixed/sticky)</li>
-                            <li>Media query responsive</li>
-                        </ul>
-                    </div>
-
-                    <div class="checklist-card">
-                        <h3>Visual &amp; Interaksi</h3>
-                        <ul>
-                            <li>Background, border, shadow</li>
-                            <li>Typography + Google Fonts</li>
-                            <li>Pseudo-class (:hover, :focus)</li>
-                            <li>Pseudo-element (::before, ::after)</li>
-                            <li>Transition, transform, keyframes</li>
-                            <li>clamp(), calc(), minmax()</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer id="contact" class="site-footer">
-        <div class="container footer-content">
-            <div>
-                <h3>CSS<span>Lab</span></h3>
-                <p>Halaman latihan CSS lengkap — PABWE Praktikum 2.</p>
-            </div>
-
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#cards">Materi</a>
-                <a href="#selectors">Selektor</a>
-                <a href="#layout">Layout</a>
-                <a href="#form">Form</a>
-                <a href="#ringkasan">Ringkasan</a>
-            </div>
+      </div>
+    </section>
+
+    <!-- Layanan Section -->
+    <section id="layanan" class="services section-padding">
+      <div class="container">
+        <div class="section-title">
+          <h2>Layanan Kami</h2>
+          <p>Solusi AI yang disesuaikan untuk kebutuhan industri modern.</p>
         </div>
+        <div class="grid services-grid">
+          
+          <!-- Layanan 1 -->
+          <article class="service-card">
+            <div class="service-icon">🤖</div>
+            <h3>Chatbot & Virtual Assistant</h3>
+            <p>Tingkatkan layanan pelanggan 24/7 dengan asisten virtual cerdas yang memahami konteks dan bahasa natural.</p>
+          </article>
+          
+          <!-- Layanan 2 -->
+          <article class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3>Otomasi Proses Bisnis</h3>
+            <p>Otomatiskan tugas berulang dengan Robotic Process Automation (RPA) berbasis AI untuk efisiensi maksimal.</p>
+          </article>
 
-        <div class="copyright">© 2026 Delcom</div>
-    </footer>
+          <!-- Layanan 3 -->
+          <article class="service-card">
+            <div class="service-icon">👁️</div>
+            <h3>Computer Vision</h3>
+            <p>Deteksi anomali, pengenalan wajah, dan analisis visual untuk manufaktur, keamanan, serta retail.</p>
+          </article>
 
-    <!-- =====================================================
-         FLOATING BUTTON
+          <!-- Layanan 4 -->
+          <article class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Analitik Prediktif</h3>
+            <p>Manfaatkan data historis Anda untuk memprediksi tren pasar, permintaan stok, dan risiko finansial.</p>
+          </article>
 
-         Latihan:
-         - position: fixed
-         - border-radius: 50%
-         - transform + transition pada :hover
-    ====================================================== -->
+        </div>
+      </div>
+    </section>
 
-    <a href="#home" class="back-to-top" aria-label="Kembali ke atas">↑</a>
+    <!-- Tentang Section -->
+    <section id="tentang" class="about section-padding">
+      <div class="container about-content">
+        <div class="about-text">
+          <h2>Mengapa Memilih Zenith Intelligence?</h2>
+          <p>Zenith Intelligence adalah pelopor dalam menghadirkan solusi kecerdasan buatan terapan di Indonesia. Tim ahli kami menggabungkan riset mendalam dengan pemahaman industri yang kuat.</p>
+          <ul class="about-list">
+            <li>✔️ Model AI yang dapat disesuaikan (Custom Models)</li>
+            <li>✔️ Keamanan dan privasi data terjamin</li>
+            <li>✔️ Integrasi mulus dengan sistem Anda saat ini</li>
+            <li>✔️ Dukungan teknis berkelanjutan</li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <div class="image-placeholder">
+            <span>Ilustrasi Tim AI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" class="contact section-padding">
+      <div class="container">
+        <div class="section-title">
+          <h2>Mulai Perjalanan AI Anda</h2>
+          <p>Hubungi kami untuk mendiskusikan bagaimana AI dapat memajukan bisnis Anda.</p>
+        </div>
+        <div class="contact-form-container">
+          <form class="contact-form" action="#" method="POST">
+            <div class="form-group">
+              <label for="name">Nama Lengkap</label>
+              <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Perusahaan</label>
+              <input type="email" id="email" name="email" required placeholder="email@perusahaan.com">
+            </div>
+            <div class="form-group">
+              <label for="message">Pesan / Kebutuhan</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Ceritakan masalah yang ingin Anda selesaikan..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3>Zenith <span>Intelligence</span></h3>
+        <p>Membawa masa depan ke bisnis Anda hari ini.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Kontak</h4>
+        <p>Email: info@zenith.ai</p>
+        <p>Telp: +62 811-2233-4455</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Zenith Intelligence. Praktikum PABWE P2 - Dibuat untuk tujuan edukasi.</p>
+    </div>
+  </footer>
+
 </body>
-
 </html>
