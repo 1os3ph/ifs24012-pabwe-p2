@@ -384,7 +384,7 @@ body {
 }
 
 .footer-brand span {
-  color: var(--primary);
+  color: #60a5fa; /* Lighter blue for dark background contrast */
 }
 
 .footer-brand p {
